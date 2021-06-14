@@ -1,28 +1,28 @@
 <template>
   <div class="accounting" >
-    <div :v-for=" component in arrItemAccounting " :key="component">
-      <componenta :item="component"></componenta>
-    </div>
-    <componenta :v-for=" component in arrItemAccounting " :key="index"></componenta>
+    <ItemAccounting v-for=" item in arrItemAccounting " :key="item"></ItemAccounting>
     <button v-on:click="AddAccountingItem">Добавить товар</button>
     <button>Готово</button>
   </div>
 </template>
 
 <script>
-import componenta from './ItemAccounting.vue'
+import ItemAccounting from './ItemAccounting.vue'
 export default {
   components: {
-    componenta
+    ItemAccounting
   },
   data () {
     return {
-      arrItemAccounting: [componenta, componenta]
+      arrItemAccounting: []
     }
+  },
+  created () {
+    this.arrItemAccounting.push('ItemAccounting')
   },
   methods: {
     AddAccountingItem (e) {
-      this.arrTest.push('wow')
+      this.arrItemAccounting.push('ItemAccounting')
     },
     RemoveAccountingItem (e) {
       e.target.parentNode.remove()
