@@ -3,9 +3,7 @@
     <div :v-for=" component in arrItemAccounting " :key="component">
       <componenta :item="component"></componenta>
     </div>
-    <div v-for="lol in arrTest" :key="lol">
-      {{ lol }}
-    </div>
+    <componenta :v-for=" component in arrItemAccounting " :key="index"></componenta>
     <button v-on:click="AddAccountingItem">Добавить товар</button>
     <button>Готово</button>
   </div>
@@ -19,12 +17,8 @@ export default {
   },
   data () {
     return {
-      arrItemAccounting: [componenta, componenta],
-      arrTest: [0, 1, 2]
+      arrItemAccounting: [componenta, componenta]
     }
-  },
-  created () {
-    console.log(this.$refs[0])
   },
   methods: {
     AddAccountingItem (e) {

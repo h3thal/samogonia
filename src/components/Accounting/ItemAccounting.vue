@@ -1,4 +1,3 @@
-props: ['item'],
 <template>
   <div class="accountingItem" ref="accountingItem">
       <label>
@@ -19,12 +18,10 @@ props: ['item'],
 
 <script>
 export default {
+  props: ['item'],
   data () {
     return {
     }
-  },
-  created () {
-    console.log(this.$refs[0])
   },
   methods: {
     RemoveAccountingItem (e) {
