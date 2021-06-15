@@ -2,15 +2,15 @@
   <div class="accountingItem" ref="accountingItem">
       <label>
         <span>Название</span>
-        <input type="text">
+        <input type="text" v-model="nameItem">
       </label>
       <label>
         <span>Кол-во</span>
-        <input type="text">
+        <input type="number" v-model="qtyItem">
       </label>
       <label>
         <span>Цена</span>
-        <input type="text">
+        <input type="number" v-model="priceItem">
       </label>
       <button v-on:click="RemoveAccountingItem">Удалить</button>
     </div>
@@ -20,6 +20,9 @@
 export default {
   data () {
     return {
+      nameItem: '',
+      qtyItem: '',
+      priceItem: ''
     }
   },
   methods: {
