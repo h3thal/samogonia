@@ -1,6 +1,6 @@
 <template>
   <div class="accounting" >
-    <ItemAccounting v-for=" item in arrItemAccounting " :index="index" :key="item" v-on:ButtonDelClick="RemoveAccountingItem">></ItemAccounting>
+    <ItemAccounting v-for=" item in arrItemAccounting " :key="item" v-on:ButtonDelClick="RemoveAccountingItem" :idItem="idItem"></ItemAccounting>
     <button v-on:click="AddAccountingItem">Добавить товар</button>
     <button>Готово</button>
   </div>
@@ -14,21 +14,23 @@ export default {
   },
   data () {
     return {
-      arrItemAccounting: []
+      arrItemAccounting: [],
+      idItem: 0
     }
   },
   created () {
-    this.index = this.index + 1
-    console.log(this.arrItemAccounting.push('ItemAccounting'))
+    console.log(this.arrItemAccounting.push(ItemAccounting))
+    console.log({ ItemAccounting })
+    this.idItem = this.idItem + 1
   },
   methods: {
     AddAccountingItem (e) {
-      this.arrItemAccounting.push('ItemAccounting')
+      this.arrItemAccounting.push(ItemAccounting)
+      this.idItem = this.idItem + 1
     },
     RemoveAccountingItem (e) {
-      console.log(this.index)
       this.arrItemAccounting.splice(1, 1)
-      e.target.parentNode.remove()
+      console.log(ItemAccounting)
     }
   }
 }

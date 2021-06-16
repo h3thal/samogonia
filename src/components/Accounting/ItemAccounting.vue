@@ -1,5 +1,5 @@
 <template>
-  <div class="accountingItem" :ref="accountingItem1" :index="index">
+  <div class="accountingItem">
       <label>
         <span>Название</span>
         <input type="text" v-model="nameItem">
@@ -24,16 +24,23 @@ export default {
   data () {
     return {
       nameItem: '',
-      qtyItem: '',
-      priceItem: '',
-      sumItem: '',
-      index: 0
+      qtyItem: 0,
+      priceItem: 0,
+      sumItem: 0,
+      test: '123'
     }
   },
   methods: {
     ButtonDelClick (e) {
+      console.log(e.target.textContent)
+      console.log(e.target.html)
       this.$emit('ButtonDelClick', e)
     }
+  },
+  mounted () {
+    this.$nextTick(function () {
+      console.log(this.idItem)
+    })
   }
 }
 </script>
