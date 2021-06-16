@@ -1,5 +1,5 @@
 <template>
-  <div class="accountingItem" ref="accountingItem">
+  <div class="accountingItem" :ref="accountingItem1" :index="index">
       <label>
         <span>Название</span>
         <input type="text" v-model="nameItem">
@@ -12,7 +12,10 @@
         <span>Цена</span>
         <input type="number" v-model="priceItem">
       </label>
-      <button v-on:click="RemoveAccountingItem">Удалить</button>
+      <label>
+        <div v-bind="sumItem">{{ qtyItem * priceItem }}</div>
+      </label>
+      <button v-on:click="ButtonDelClick">Удалить</button>
     </div>
 </template>
 
@@ -22,12 +25,14 @@ export default {
     return {
       nameItem: '',
       qtyItem: '',
-      priceItem: ''
+      priceItem: '',
+      sumItem: '',
+      index: 0
     }
   },
   methods: {
-    RemoveAccountingItem (e) {
-      e.target.parentNode.remove()
+    ButtonDelClick (e) {
+      this.$emit('ButtonDelClick', e)
     }
   }
 }
