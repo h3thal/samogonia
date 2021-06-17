@@ -1,19 +1,19 @@
 <template>
-  <div class="accountingItem">
+  <div class="accountingItem" @itemObj="this.item">
       <label>
         <span>Название</span>
-        <input type="text" v-model="nameItem">
+        <input type="text" v-model="item.nameItem">
       </label>
       <label>
         <span>Кол-во</span>
-        <input type="number" v-model="qtyItem">
+        <input type="number" v-model="item.qtyItem">
       </label>
       <label>
         <span>Цена</span>
-        <input type="number" v-model="priceItem">
+        <input type="number" v-model="item.priceItem">
       </label>
       <label>
-        <div v-bind="sumItem">{{ qtyItem * priceItem }}</div>
+        <div v-bind="item.sumItem">{{ item.qtyItem * item.priceItem }}</div>
       </label>
       <button v-on:click="ButtonDelClick">Удалить</button>
     </div>
@@ -23,11 +23,13 @@
 export default {
   data () {
     return {
-      nameItem: '',
-      qtyItem: 0,
-      priceItem: 0,
-      sumItem: 0,
-      test: '123'
+      item: {
+        nameItem: '',
+        qtyItem: 0,
+        priceItem: 0,
+        sumItem: 0,
+        test: '123'
+      }
     }
   },
   methods: {
@@ -39,7 +41,9 @@ export default {
   },
   mounted () {
     this.$nextTick(function () {
-      console.log(this.idItem)
+      this.$emit('itemObj', {
+        nameItem: this.nameItem
+      })
     })
   }
 }

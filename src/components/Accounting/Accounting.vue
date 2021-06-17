@@ -1,6 +1,6 @@
 <template>
   <div class="accounting" >
-    <ItemAccounting v-for=" item in arrItemAccounting " :key="item" v-on:ButtonDelClick="RemoveAccountingItem" :idItem="idItem"></ItemAccounting>
+    <ItemAccounting v-for=" item in arrItemAccounting " :key="item" :itemObj="itemObj" v-on:ButtonDelClick="RemoveAccountingItem" :idItem="idItem"></ItemAccounting>
     <button v-on:click="AddAccountingItem">Добавить товар</button>
     <button>Готово</button>
   </div>
@@ -20,7 +20,6 @@ export default {
   },
   created () {
     console.log(this.arrItemAccounting.push(ItemAccounting))
-    console.log({ ItemAccounting })
     this.idItem = this.idItem + 1
   },
   methods: {
