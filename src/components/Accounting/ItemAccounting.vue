@@ -34,6 +34,9 @@ export default {
   },
   data () {
     return {
+      nameItem: '',
+      qtyItem: '',
+      priceItem: ''
     }
   },
   methods: {
