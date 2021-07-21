@@ -2,9 +2,9 @@
   <form class="accounting" @submit.prevent>
     <ItemAccounting
       v-for="(item, index) of arrItemAccounting"
-      :item="item"
-      :index="index"
       :key="item.id"
+      :index="index"
+      :item="item"
       @update="updateItem"
       @ButtonDelClick="RemoveAccountingItem"
     />
@@ -32,11 +32,9 @@ export default {
       this.arrItemAccounting.push({ id: nextId, nameItem: '', qtyItem: '', priceItem: '', sumItem: '' })
     },
     RemoveAccountingItem (id) {
-      console.log(id)
       this.arrItemAccounting = this.arrItemAccounting.filter(item => item.id !== id)
     },
     updateItem (data) {
-      // console.log(Object.values(this.arrItemAccounting)[0].id)
       Object.values(this.arrItemAccounting).forEach((e) => {
         if (e.id === data.id) {
           e.nameItem = data.nameItem

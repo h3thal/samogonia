@@ -1,23 +1,23 @@
 <template>
-  <div class="accountingItem">
-      <label>
-        <span>Название {{ this.index }}</span>
-        <input type="text" required v-model="nameItem" @input="update">
-      </label>
-      <label>
-        <span>Кол-во</span>
-        <input type="number" required v-model="qtyItem" @input="update">
-      </label>
-      <label>
-        <span>Цена</span>
-        <input type="number" required v-model="priceItem" @input="update">
-      </label>
-      <label>
-        <span>Сумма</span>
-        <span v-bind="this.item.sumItem">{{ this.item.qtyItem * this.item.priceItem }}</span>
-      </label>
-      <button @click="ButtonDelClick">Удалить</button>
-    </div>
+  <div class="accountingItem" ref="this.index">
+    <label>
+      <span>Название {{ this.index }}</span>
+      <input type="text" required v-model="nameItem" @input="update">
+    </label>
+    <label>
+      <span>Кол-во</span>
+      <input type="number" required v-model="qtyItem" @input="update">
+    </label>
+    <label>
+      <span>Цена</span>
+      <input type="number" required v-model="priceItem" @input="update">
+    </label>
+    <label>
+      <span>Сумма</span>
+      <span ref="sum" v-bind="this.item.sumItem">{{ this.item.qtyItem * this.item.priceItem }}</span>
+    </label>
+    <button @click="ButtonDelClick">Удалить</button>
+  </div>
 </template>
 
 <script>
