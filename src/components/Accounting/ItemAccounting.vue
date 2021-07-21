@@ -1,54 +1,78 @@
 <template>
-  <div class="accountingItem" @itemObj="this.item">
+  <div class="accountingItem">
       <label>
-        <span>Название</span>
-        <input type="text" v-model="item.nameItem">
+        <span>Название {{ this.index }}</span>
+        <input type="text" required v-model="nameItem" @input="update">
       </label>
       <label>
         <span>Кол-во</span>
-        <input type="number" v-model="item.qtyItem">
+        <input type="number" required v-model="qtyItem" @input="update">
       </label>
       <label>
         <span>Цена</span>
-        <input type="number" v-model="item.priceItem">
+        <input type="number" required v-model="priceItem" @input="update">
       </label>
       <label>
-        <div v-bind="item.sumItem">{{ item.qtyItem * item.priceItem }}</div>
+        <span>Сумма</span>
+        <span v-bind="this.item.sumItem">{{ this.item.qtyItem * this.item.priceItem }}</span>
       </label>
-      <button v-on:click="ButtonDelClick">Удалить</button>
+      <button @click="ButtonDelClick">Удалить</button>
     </div>
 </template>
 
 <script>
 export default {
+  props: {
+    item: {
+      type: Object,
+      required: true
+    },
+    index: {
+      type: Number,
+      required: true
+    }
+  },
   data () {
     return {
-      item: {
-        nameItem: '',
-        qtyItem: 0,
-        priceItem: 0,
-        sumItem: 0,
-        test: '123'
-      }
     }
   },
   methods: {
-    ButtonDelClick (e) {
-      console.log(e.target.textContent)
-      console.log(e.target.html)
-      this.$emit('ButtonDelClick', e)
+    ButtonDelClick () {
+      const id = this.item.id
+      this.$emit('ButtonDelClick', id)
+    },
+    update () {
+      this.$emit('update', {
+        id: this.item.id,
+        nameItem: this.nameItem,
+        qtyItem: this.qtyItem,
+        priceItem: this.priceItem,
+        sumIten: this.sumIten
+      })
     }
   },
   mounted () {
-    this.$nextTick(function () {
-      this.$emit('itemObj', {
-        nameItem: this.nameItem
-      })
-    })
   }
 }
 </script>
 
-<style>
-
+<style lang="scss">
+@import "src/assets/scss/__mixin.scss";
+  .accountingItem {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0px;
+    @include sm {
+      flex-direction: column;
+      margin: 30px 0px;
+      label {
+        display: flex;
+        margin:  5px 0px;
+        input {
+          flex: 1 0;
+          margin-left: 10px;
+        }
+      }
+    }
+  }
 </style>

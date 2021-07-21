@@ -1,9 +1,16 @@
 <template>
-  <div class="accounting" >
-    <ItemAccounting v-for=" item in arrItemAccounting " :key="item" :itemObj="itemObj" v-on:ButtonDelClick="RemoveAccountingItem" :idItem="idItem"></ItemAccounting>
-    <button v-on:click="AddAccountingItem">Добавить товар</button>
-    <button>Готово</button>
-  </div>
+  <form class="accounting" @submit.prevent>
+    <ItemAccounting
+      v-for="(item, index) of this.arrItemAccounting"
+      v-bind:item="item"
+      v-bind:index="index"
+      :key="item.id"
+      @update="updateItem"
+      @ButtonDelClick="RemoveAccountingItem"
+    />
+    <button @click="AddAccountingItem">Добавить товар</button>
+    <button @click="submitAccounting">Готово</button>
+  </form>
 </template>
 
 <script>
@@ -14,27 +21,38 @@ export default {
   },
   data () {
     return {
-      arrItemAccounting: [],
-      idItem: 0
+      arrItemAccounting: [{ id: 0, nameItem: '', qtyItem: '', priceItem: '', sumItem: '' }]
     }
   },
   created () {
-    console.log(this.arrItemAccounting.push(ItemAccounting))
-    this.idItem = this.idItem + 1
   },
   methods: {
     AddAccountingItem (e) {
-      this.arrItemAccounting.push(ItemAccounting)
-      this.idItem = this.idItem + 1
+      const nextId = 1 + +this.arrItemAccounting[this.arrItemAccounting.length - 1].id
+      this.arrItemAccounting.push({ id: nextId, nameItem: '', qtyItem: '', priceItem: '', sumItem: '' })
     },
-    RemoveAccountingItem (e) {
-      this.arrItemAccounting.splice(1, 1)
-      console.log(ItemAccounting)
+    RemoveAccountingItem (id) {
+      this.arrItemAccounting = this.arrItemAccounting.filter(item => item.id !== id)
+    },
+    updateItem (data) {
+      // console.log(Object.values(this.arrItemAccounting)[0].id)
+      Object.values(this.arrItemAccounting).forEach((e) => {
+        if (e.id === data.id) {
+          e.nameItem = data.nameItem
+          e.qtyItem = data.qtyItem
+          e.priceItem = data.priceItem
+          e.sumItem = data.sumItem
+        }
+      })
+    },
+    submitAccounting (e) {
+      e.preventDefault()
+      alert(this.arrItemAccounting)
     }
   }
 }
 </script>
 
-<style>
+<style lang="scss">
 
 </style>

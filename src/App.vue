@@ -9,9 +9,6 @@ export default {
   name: 'App',
   components: {
     Accouting
-  },
-  created () {
-    console.log(this.$store.state)
   }
 }
 </script>
