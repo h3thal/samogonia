@@ -1,14 +1,14 @@
 <template>
   <form class="accounting" @submit.prevent>
     <ItemAccounting
-      v-for="(item, index) of this.arrItemAccounting"
-      v-bind:item="item"
-      v-bind:index="index"
+      v-for="(item, index) of arrItemAccounting"
+      :item="item"
+      :index="index"
       :key="item.id"
       @update="updateItem"
       @ButtonDelClick="RemoveAccountingItem"
     />
-    <button @click="AddAccountingItem">Добавить товар</button>
+    <button @click.prevent="AddAccountingItem">Добавить товар</button>
     <button @click="submitAccounting">Готово</button>
   </form>
 </template>
@@ -32,6 +32,7 @@ export default {
       this.arrItemAccounting.push({ id: nextId, nameItem: '', qtyItem: '', priceItem: '', sumItem: '' })
     },
     RemoveAccountingItem (id) {
+      console.log(id)
       this.arrItemAccounting = this.arrItemAccounting.filter(item => item.id !== id)
     },
     updateItem (data) {
