@@ -11,8 +11,8 @@
     <div class="nav__links" :class="{ 'open' : this.isOpen }">
       <ul>
         <!-- <li><a href="">Домой</a></li> -->
-        <li><router-link to="/">Перейти к home</router-link></li>
-        <li><router-link to="/accounting">Новая запись</router-link></li>
+        <li><router-link to="/accounting" @click="(this.isOpen) ? this.isOpen = false : ''">Новая запись</router-link></li>
+        <li><router-link to="/history/today" @click="this.isOpen = false">Истории</router-link></li>
         <li><a href="">Новая запись</a></li>
         <li><a href="">История</a></li>
       </ul>
@@ -31,7 +31,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'src/assets/scss/__mixin.scss';
+@import '@/assets/scss/__mixin.scss';
 a {
   padding: 30px 0px;
 }

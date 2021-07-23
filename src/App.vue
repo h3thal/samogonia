@@ -1,11 +1,11 @@
 <template>
   <Navbar/>
   <img alt="Vue logo" src="./assets/logo.png">
-  <router-view></router-view>
+  <router-view/>
 </template>
 
 <script>
-import Navbar from './components/Nav/Navbar.vue'
+import Navbar from '@/components/Nav/Navbar.vue'
 export default {
   name: 'App',
   components: {
