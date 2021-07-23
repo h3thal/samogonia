@@ -1,18 +1,15 @@
 <template>
   <Navbar/>
   <img alt="Vue logo" src="./assets/logo.png">
-  <Accouting/>
   <router-view></router-view>
 </template>
 
 <script>
 import Navbar from './components/Nav/Navbar.vue'
-import Accouting from './components/Accounting/Accounting.vue'
 export default {
   name: 'App',
   components: {
-    Navbar,
-    Accouting
+    Navbar
   }
 }
 </script>
