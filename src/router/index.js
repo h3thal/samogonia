@@ -5,7 +5,7 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: '/accounting', component: () => import('@/views/Accounting.vue') },
-    { path: '/history/:date', component: () => import('@/views/History.vue') }
+    { path: '/history', component: () => import('@/views/History.vue') }
   ] // short for `routes: routes`
 })
 export default router

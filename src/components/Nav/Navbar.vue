@@ -12,7 +12,7 @@
       <ul>
         <!-- <li><a href="">Домой</a></li> -->
         <li><router-link to="/accounting" @click="(this.isOpen) ? this.isOpen = false : ''">Новая запись</router-link></li>
-        <li><router-link to="/history/today" @click="this.isOpen = false">Истории</router-link></li>
+        <li><router-link to="/history" @click="this.isOpen = false">Истории</router-link></li>
         <li><a href="">Новая запись</a></li>
         <li><a href="">История</a></li>
       </ul>

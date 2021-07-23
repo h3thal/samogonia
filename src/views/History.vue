@@ -1,16 +1,21 @@
 <template>
-  <div ref='test'>
-    <HistoryItem/>
+  <div class="history">
+    <ItemHistory
+      v-for="(item, index) in this.arrHistory.history"
+      :key="index"
+      :index="index"
+      :item="item"
+    >test</ItemHistory>
   </div>
 </template>
 
 <script>
-import HistoryItem from '@/components/History/ItemHistory.vue'
+import ItemHistory from '@/components/History/ItemHistory.vue'
 export default {
   name: 'History',
-  components: [
-    HistoryItem
-  ],
+  components: {
+    ItemHistory
+  },
   data () {
     return {
       arrHistory:
